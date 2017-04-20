@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  transition: scroll 0.5s ease; }
+
+* {
+  font-family: Roboto, sans-serif; }
+
+@media($small) {
+  nav {
+    display: none; } }
+header {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/background.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-color: #fff; }
+  header .text {
+    border: 5px solid #fff;
+    text-align: center;
+    padding: 1.25rem 1rem; }
+@media(max-width: 600px) {
+  header .text {
+    border: none; }
+    header .text h1 {
+      text-transform: uppercase;
+      font-size: 4rem; }
+      header .text h1 h4 {
+        text-transform: capitalize;
+        font-size: 1rem; } }
+  header .pad {
+    width: 75vw;
+    height: 80vh;
+    margin: auto;
+    border-radius: 5%;
+    box-shadow: 5px 10px 10px #212121;
+    background-color: rgba(230, 230, 230, 0.8);
+    background-image: url("../img/bobbafett.jpg");
+    background-attachment: fixed;
+    background-size: cover; }
+  header .screen {
+    width: calc(100% - 6rem);
+    height: calc(100% - 6rem);
+    margin: 3rem auto;
+    background-color: #fff;
+    border: 2px solid #212121;
+    border-radius: 3px;
+    overflow: scroll; }
+    header .screen ul {
+      list-style-type: none;
+      width: 80%;
+      height: 90%;
+      margin: auto; }
+      header .screen ul li {
+        padding: 1rem;
+        background-color: #eee; }
+
+aside {
+  display: block; }
+  aside a {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600; }
+    aside a:hover {
+      text-decoration: underline; }
+  aside .menu {
+    position: fixed;
+    z-index: 10;
+    top: 15px;
+    right: 20px;
+    color: #fff; }
+    @media screen and (min-width: 601px) {
+      aside .menu {
+        display: none; } }
+
+@media screen and (max-width: 600px) {
+  aside i {
+    display: block; }
+  aside nav {
+    display: none;
+    transition: display 5s ease-in-out;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: fixed; }
+    aside nav ul {
+      background-color: #fff;
+      margin: 0 auto;
+      width: 100%; }
+      aside nav ul li {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem; }
+        aside nav ul li a {
+          color: teal;
+          font-size: 2.5rem; } }
+@media screen and (min-width: 601px) {
+  aside i {
+    display: block; }
+  aside nav {
+    display: block;
+    width: 100vw;
+    height: 54px;
+    z-index: 1;
+    position: fixed; }
+    aside nav ul {
+      list-style: none;
+      float: right; }
+      aside nav ul li {
+        display: inline-block;
+        padding: 1.25rem 0.5rem; }
+        aside nav ul li:last-child {
+          padding-right: 2rem; }
+        aside nav ul li a {
+          color: #fff;
+          font-size: 1rem; } }
+footer {
+  min-height: 100vh;
+  height: 100vh;
+  background-image: url("../images/contact.jpg");
+  background-position: center;
+  background-size: cover; }
+  footer .footer-mask {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%; }
+
+/*# sourceMappingURL=main.css.map */

@@ -21,17 +21,15 @@ let loadPersons = () => {
         success : (result,status,xhr) => {
           persons = result.results;
           next = result.next;
-          resolve([persons, next]);
+          resolve(persons);
         }
       });
   });
   load.then(
-    (arr) => {
-      console.log(next);
-      arr[0].forEach( (person) => {
+    (persons) => {
+      persons.forEach( (person) => {
         appendContent(`Hi! My name is ${person.name}`);
       });
-      next = arr[1];
       url = next;
       if(next){
         loadPersons();

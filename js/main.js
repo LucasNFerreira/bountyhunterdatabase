@@ -12,26 +12,31 @@ let appendContent = (text) => {
   node.appendChild(textNode);
   document.querySelector('#persons-list').appendChild(node);
 };
-
-let load = () => {
-  $.ajax({
-    async : false,
-    url : url,
-    success : (result,status,xhr) => {
-      persons = result.results;
-      next = result.next;
-    }
+let loadPersons = () => {
+  let load = new Promise(
+    (resolve, reject) => {
+      $.ajax({
+        async : true,
+        url : url,
+        success : (result,status,xhr) => {
+          persons = result.results;
+          next = result.next;
+          resolve([persons, next]);
+        }
+      });
+  });
+  load.then(
+    (arr) => {
+      console.log(next);
+      arr[0].forEach( (person) => {
+        appendContent(`Hi! My name is ${person.name}`);
+      });
+      next = arr[1];
+      url = next;
+      if(next){
+        loadPersons();
+      }
   });
 };
 
-let show = () => {
-  persons.forEach( (person) => {
-    appendContent(`Hi! My name is ${person.name}`);
-  });
-  url = next;
-};
-
-do {
-  load();
-  show();
-} while (next);
+loadPersons();

@@ -1,40 +1,39 @@
 /*jshint esversion: 6 */
 
-let url = "http://swapi.co/api/people/";
+const endpoint = "http://swapi.co/api/people/";
 
-let persons;
-let next;
+let characters;
 let total = 0;
 
-let appendContent = (text) => {
-  let node = document.createElement('LI');
-  let textNode = document.createTextNode(text);
+function appendContent(text) {
+  const node = document.createElement('li');
+  const textNode = document.createTextNode(text);
+
   node.appendChild(textNode);
-  document.querySelector('#persons-list').appendChild(node);
-};
-let loadPersons = () => {
-  let load = new Promise(
-    (resolve, reject) => {
-      $.ajax({
-        async : true,
-        url : url,
-        success : (result,status,xhr) => {
-          persons = result.results;
-          next = result.next;
-          resolve(persons);
-        }
-      });
-  });
-  load.then(
-    (persons) => {
-      persons.forEach( (person) => {
-        appendContent(`Hi! My name is ${person.name}`);
-      });
-      url = next;
-      if(next){
-        loadPersons();
-      }
-  });
+  document.querySelector('#characters-list').appendChild(node);
 };
 
-loadPersons();
+function displayCharacters(result,status,xhr) {
+  result.results.forEach((character) => {
+    appendContent(`Hi! My name is ${character.name}`);
+  });
+
+  if (result.next){
+    loadcharacters(result.next);
+  }
+}
+
+function errorFunction(result,status,xhr) {
+  console.log('Something is fucked');
+}
+
+function loadcharacters(endpoint) {
+  const promise = $.ajax({
+    async: true,
+    url: endpoint,
+  });
+  
+  promise.then(displayCharacters, errorFunction);
+};
+
+loadcharacters(endpoint);

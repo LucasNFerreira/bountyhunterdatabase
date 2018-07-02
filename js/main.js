@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-const endpoint = "http://swapi.co/api/people/";
+const endpoint = "https://swapi.co/api/people/?format=json";
 
 let characters;
 let total = 0;
